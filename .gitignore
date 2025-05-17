@@ -1,0 +1,16 @@
+### Minimal git ignore patterns template
+
+# IDE configurations
+/.vscode/
+/.idea/
+
+# Temporary files directory
+/temp/
+/tmp/
+
+# OS generated files
+Thumbs.db
+desktop.ini
+.DS_Store
+.Trashes
+._*
