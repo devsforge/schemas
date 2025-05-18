@@ -5,9 +5,12 @@ $comment: |
   seealso:: https://pandoc.org/MANUAL.html#variables
 
 title: Pandoc Metadata
-# TODO: add schema description
 description: |
-  ...TBD
+  Schema for Pandoc metadata variables, defining properties for document
+  metadata such as title, author, abstract, language settings, and citation
+  rendering.
+  This schema is based on specifications from the Pandoc documentation and
+  tailored to support diverse document formats and metadata standards.
 
 $defs:
   author:
