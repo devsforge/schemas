@@ -95,6 +95,15 @@ properties:
     enum:
       - ltr
       - rtl
+  # Citation rendering
+  csl:
+    description: |
+      The Citation Style Language file or URL. Defines the citation styling.
+    type: string
+  bibliography:
+    description: |
+      The bibliography file.
+    type: string
 required:
   - title
   - author
