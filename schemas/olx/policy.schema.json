@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/schemas/olx/policy.schema.json",
+  "$comment": "https://docs.openedx.org/en/latest/educators/olx/policies/course.html",
+  "title": "OLX Course Policies",
+  "description": "Course policies are defined in \"policy.json\" file inside \"policy/<course-name>\" directory.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "start": {
+      "description": "The start date for the course.",
+      "$ref": "#/$defs/datetime"
+    },
+    "advertised_start": {
+      "description": "The start date displayed in the course listing and course about pages.",
+      "$ref": "#/$defs/datetime"
+    },
+    "disable_policy_graph": {
+      "description": "Whether the policy graph should be disabled (true) or not (false).",
+      "type": "boolean"
+    },
+    "enrollment_start": {
+      "description": "The dates in which students can enroll in the course.",
+      "$ref": "#/$defs/datetime"
+    },
+    "enrollment_end": {
+      "description": "The dates in which students can enroll in the course.",
+      "$ref": "#/$defs/datetime"
+    },
+    "end": {
+      "description": "The end date for the course.",
+      "$ref": "#/$defs/datetime"
+    },
+    "end_of_course_survey_url": {
+      "description": "The URL for an end of course survey. The link is shown after the course is over, next to certificate download links.",
+      "type": "string",
+      "format": "url"
+    },
+    "tabs": {
+      "description": "Custom pages, or tabs, in the courseware.",
+      "type": "object"
+    },
+    "discussion_blackouts": {
+      "description": "An array of time intervals during which students cannot create or edit discussion posts.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/datetime_range"
+      }
+    },
+    "show_calculator": {
+      "description": "Whether the calculator is shown in the course (true) or not (false).",
+      "type": "boolean"
+    },
+    "days_early_for_beta": {
+      "description": "The number of days early that students in the beta-testers group can access the course.",
+      "type": "integer"
+    },
+    "cohort_config": {
+      "description": "Configuration for course cohorts.",
+      "$ref": "#/$defs/cohort_config"
+    },
+    "pdf_textbooks": {
+      "description": "Have pdf-based textbooks on tabs in the courseware.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "tab_title": {
+            "description": "The title of the textbook's tab in the courseware.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL to the PDF file.",
+            "type": "string",
+            "format": "uri"
+          },
+          "chapters": {
+            "description": "The chapters in the textbook.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "title": {
+                  "description": "The title of the chapter.",
+                  "type": "string"
+                },
+                "url": {
+                  "description": "The URL to the chapter's PDF file.",
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "html_textbooks": {
+      "description": "The addition of HTML-based textbooks on tabs in the courseware.",
+      "deprecated": true,
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "$defs": {
+    "cohort_config": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cohorted": {
+          "description": "...",
+          "type": "boolean",
+          "default": false
+        },
+        "cohorted_discussions": {
+          "description": "list of discussion topics that should be cohorted. Any not specified in this list are not cohorted.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "auto_cohort_groups": {
+          "description": "If cohorted is true, each student is automatically assigned to a random group from this list, creating the group if needed.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            ["group A", "group B"]
+          ]
+        }
+      }
+    },
+    "datetime": {
+      "type": "string",
+      "pattern": "^20\\d{2}-(?:0\\d|1[0-2])-(?:[0-2]\\d|3[01])T(?:[01]\\d|2[0-3]):[0-5]\\d$",
+      "examples": [
+        "2020-02-20T20:20",
+        "2020-01-01T00:00",
+        "2020-12-31T23:59"
+      ]
+    },
+    "datetime_range": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/datetime"
+      }
+    }
+  }
+}

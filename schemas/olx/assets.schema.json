@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/schemas/olx/assets.schema.json",
+  "$comment": "https://docs.openedx.org/en/latest/educators/olx/policies/assets-policy.html",
+  "title": "OLX Course Assets Policies",
+  "description": "Course assets policies are defined in \"assets.json\" file inside \"policy\" directory.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "content_type": {
+      "description": "The MIME type of the file.",
+      "type": "string"
+    },
+    "display_name": {
+      "description": "The file name.",
+      "type": "string"
+    },
+    "locked": {
+      "description": "true if users can only access the file from within your course.",
+      "type": "boolean",
+      "default": true
+    },
+    "content_son": {
+      "$ref": "#/$defs/content_son"
+    },
+    "filename": {
+      "description": "The full path and name of the file in the Open edX Platform.",
+      "type": "string",
+      "format": "url"
+    },
+    "import_path": {
+      "type": "string"
+    },
+    "thumbnail_location": {
+      "type": "array"
+    }
+  },
+  "$defs": {
+    "content_son": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "asset"
+          ]
+        },
+        "name": {
+          "description": "The file name.",
+          "type": "string"
+        },
+        "course": {
+          "description": "The course number.",
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "org": {
+          "description": "The organization that created the course.",
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/schemas/olx/grading_policy.schema.json",
+  "$comment": "https://docs.openedx.org/en/latest/educators/olx/policies/grading.html",
+  "title": "OLX Course Grading Policy",
+  "description": "Course grading policies are defined in \"grading_policy.json\" file inside \"policy/<course-name>\" directory.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "GRADE_CUTOFFS": {
+      "description": "The minimal grade for passing the course, and receiving a certificate if offered.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "GRADER": {
+      "description": "For each assignment type.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "min_count": {
+            "type": "integer"
+          },
+          "weight": {
+            "$comment": "The total weight of all assignment types must equal 1.0",
+            "description": "The percentage of the total grade determined by assignments of this type.",
+            "type": "number"
+          },
+          "type": {
+            "description": "The name of the assignment type.",
+            "type": "string"
+          },
+          "drop_count": {
+            "description": "The number of assignments of this type that can be dropped when calculating the final grade.",
+            "type": "integer"
+          },
+          "short_label": {
+            "description": "The label for the assignment type shown on the student’s Progress page.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
