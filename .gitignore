@@ -1,0 +1,9 @@
+### IDEs full template
+/.vscode/*
+/.idea/*
+!/.idea/scopes/
+!/.idea/inspectionProfiles/
+
+### Temporary files template
+/temp/
+/tmp/
