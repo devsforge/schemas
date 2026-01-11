@@ -1,9 +1,15 @@
 ### IDEs full template
 /.vscode/*
 /.idea/*
+# shared scopes and inspection profiles
 !/.idea/scopes/
 !/.idea/inspectionProfiles/
 
 ### Temporary files template
 /temp/
 /tmp/
+
+### Distribution files template
+# these files are meant to be build and delivered via CI/CD pipeline
+/build/
+/dist/
