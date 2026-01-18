@@ -10,13 +10,11 @@ indent_size = 2
 max_line_length = 119
 ij_visual_guides = 119
 
-[{README.md,LICENSE}]
+[{README.md,LICENSE,docs/vocab/*.md}]
 max_line_length = 79
 ij_visual_guides = 79
 
 [*.schema.json]
-max_line_length = off
-ij_visual_guides = none
 ij_json_spaces_within_braces = true
 ij_json_spaces_within_brackets = true
 ij_json_space_after_colon = true
